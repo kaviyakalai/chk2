@@ -48,12 +48,12 @@ object HotcellUtils {
   }
 
   // Utility that returns square of a number
-  def square (a:Int) : Double =
+  def sq (a:Int) : Double =
   {
     (a * a).toDouble
   }
 
-  def CountNeighbours(inputX: Int, inputY: Int, inputZ: Int, minX: Int, maxX: Int, minY: Int, maxY: Int, minZ: Int, maxZ: Int): Int =
+  def CalculatetNeighbors(inputX: Int, inputY: Int, inputZ: Int, minX: Int, maxX: Int, minY: Int, maxY: Int, minZ: Int, maxZ: Int): Int =
   {
     var num_cells = 0     
     if (inputX == minX || inputX == maxX) 
@@ -84,7 +84,7 @@ object HotcellUtils {
     ans
   }
 
-  def getGScore(num_adjCells: Int, sum_adjCells: Int, numCells: Int, x: Int, y: Int, z: Int, mean: Double, sd: Double): Double =
+  def calculateGScore(num_adjCells: Int, sum_adjCells: Int, numCells: Int, x: Int, y: Int, z: Int, mean: Double, sd: Double): Double =
   {
     val numerator = (sum_adjCells.toDouble - (mean * num_adjCells.toDouble))
     val denominator = sd * math.sqrt(((numCells.toDouble * num_adjCells.toDouble) - (num_adjCells.toDouble * num_adjCells.toDouble)) / (numCells.toDouble - 1.0))    
