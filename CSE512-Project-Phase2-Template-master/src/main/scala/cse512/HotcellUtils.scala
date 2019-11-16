@@ -48,42 +48,46 @@ object HotcellUtils {
   }
 
   // Utility that returns square of a number
-  def square (a:Int) : Double =
+  def sq (a:Int) : Double =
   {
     (a * a).toDouble
   }
 
-  // Method that counts the number of neighbors for each cell, given the min,max and input value.
-  def CountNeighbours(minX: Int, minY: Int, minZ: Int, maxX: Int, maxY: Int, maxZ: Int, inputX: Int, inputY: Int, inputZ: Int): Int =
+  def CalculateNeighbors(inputX: Int, inputY: Int, inputZ: Int, minX: Int, maxX: Int, minY: Int, maxY: Int, minZ: Int, maxZ: Int): Int =
   {
-    var numCells = 0
-    // If the input is at the boundaries, increment the number of neighboring cells.
-    if (inputX == minX || inputX == maxX) {
-      numCells += 1
+    var num_cells = 0     
+    if (inputX == minX || inputX == maxX) 
+    {
+      num_cells += 1
     }
-
-    if (inputY == minY || inputY == maxY) {
-      numCells += 1
+    if (inputY == minY || inputY == maxY) 
+    {
+        num_cells += 1
     }
-
-    if (inputZ == minZ || inputZ == maxZ) {
-      numCells += 1
+    if (inputZ == minZ || inputZ == maxZ) 
+    {
+        num_cells += 1
     }
-    var returnValue = 26
-    // Based on the number of closeby cells, return 17 (1 neighbor), 11 (2 neighbors), 7 (3 neighbors), 26 (none)
-    numCells match {
-      case 1 => returnValue = 17
-      case 2 => returnValue = 11
-      case 3 => returnValue = 7
-      case _ => returnValue =  26
-    }
-    returnValue
+    var ans = 26
+    if (num_cells == 1) 
+    {
+      ans = 17;
+    } 
+    else if (num_cells == 2) 
+    {
+      ans = 11;
+    } 
+    else if (num_cells == 3) 
+    {
+      ans = 7;
+    }    
+    ans
   }
 
-  def getGScore(x: Int, y: Int, z: Int, countN: Int, sumN: Int, numCells: Int, mean: Double, sd: Double): Double =
+  def calculateGScore(num_adjCells: Int, sum_adjCells: Int, numCells: Int, x: Int, y: Int, z: Int, mean: Double, sd: Double): Double =
   {
-    val numerator = sumN.toDouble - (mean * countN.toDouble)
-    val denominator = sd * math.sqrt(((numCells.toDouble * countN.toDouble) - (countN.toDouble * countN.toDouble))/(numCells.toDouble - 1.0))
+    val numerator = (sum_adjCells.toDouble - (mean * num_adjCells.toDouble))
+    val denominator = sd * math.sqrt(((numCells.toDouble * num_adjCells.toDouble) - (num_adjCells.toDouble * num_adjCells.toDouble)) / (numCells.toDouble - 1.0))    
     numerator / denominator
   }
 }
