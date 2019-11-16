@@ -2,7 +2,8 @@ package cse512
 
 object HotzoneUtils {
   //Returns True if a point is in a rectangle, else false.
-  def ST_Contains(queryRectangle: String, pointString: String ): Boolean = {
+  def ST_Contains(queryRectangle: String, pointString: String ): Boolean = 
+  {
     val rectPoints = queryRectangle.split(",")
     val firstX = rectPoints(0).trim().toDouble
     val firstY = rectPoints(1).trim().toDouble
@@ -15,16 +16,16 @@ object HotzoneUtils {
 
     val largeX = math.max(firstX, secondX)
     val largeY = math.max(firstY, secondY)
-
     val smallX = math.min(firstX, secondX)
     val smallY = math.min(firstY, secondY)
 
-    if (pointX >= smallX && pointY >= smallY && pointX <= largeX && pointY <= largeY) {
+    if (pointX >= smallX && pointY >= smallY && pointX <= largeX && pointY <= largeY) 
+    {
       return true
-    } else {
+    } 
+    else 
+    {
       return false
     }
   }
-
-
 }
