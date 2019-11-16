@@ -53,7 +53,7 @@ object HotcellUtils {
     (a * a).toDouble
   }
 
-  def CalculatetNeighbors(inputX: Int, inputY: Int, inputZ: Int, minX: Int, maxX: Int, minY: Int, maxY: Int, minZ: Int, maxZ: Int): Int =
+  def CalculateNeighbors(inputX: Int, inputY: Int, inputZ: Int, minX: Int, maxX: Int, minY: Int, maxY: Int, minZ: Int, maxZ: Int): Int =
   {
     var num_cells = 0     
     if (inputX == minX || inputX == maxX) 
